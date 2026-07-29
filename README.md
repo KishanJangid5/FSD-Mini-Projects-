@@ -84,7 +84,7 @@ Full-Stack-Development/
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/full-stack-development.git
+git clone https://github.com/KishanJangid5/FSD-Mini-Projects.git
 ```
 
 ### Navigate to Any Assignment
