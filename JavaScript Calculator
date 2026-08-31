@@ -175,3 +175,7 @@ function calculate() {
     document.getElementById("result").innerHTML =
         `<span style="color:#00ff66;">Result: ${result}</span>`;
 }
+</script>
+
+</body>
+</html>
