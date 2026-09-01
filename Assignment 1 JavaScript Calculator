@@ -14,3 +14,4 @@ numbers and an operator (+, −, ∗, /) as input.
 o Handle edge cases such as division by zero with an appropriate warning. 
 • Execution Step: Run the script using a browser console, or by embedding it in an 
 HTML file and opening it in a web browser. 
+
