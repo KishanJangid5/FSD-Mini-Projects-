@@ -1,0 +1,16 @@
+Assignment 1. JavaScript Calculator using Functions 
+• Aim: To design and implement a basic arithmetic calculator using JavaScript 
+functions and conditional logic. 
+• Learning Objectives: Understand JavaScript variables, basic operators, function 
+definitions, parameters, and control flow structures (switch or if-else). 
+• Theoretical Background: JavaScript functions as reusable blocks of code; using 
+conditional statements to route execution based on user input (e.g., operator 
+selection). 
+• Detailed Requirements: 
+o Implement separate helper functions for add(a, b), subtract(a, b), 
+multiply(a, b), and divide(a, b). 
+o Implement a driver function or prompt-based interface that takes two 
+numbers and an operator (+, −, ∗, /) as input. 
+o Handle edge cases such as division by zero with an appropriate warning. 
+• Execution Step: Run the script using a browser console, or by embedding it in an 
+HTML file and opening it in a web browser. 
