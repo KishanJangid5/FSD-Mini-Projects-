@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Task Tracker</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(-45deg,#667eea,#764ba2,#00c6ff,#23d5ab);
+    background-size:400% 400%;
+    animation:gradient 12s ease infinite;
+    padding:20px;
+}
+
+@keyframes gradient{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.task-tracker-card{
+    width:100%;
+    max-width:450px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.3);
+    border-radius:25px;
+    padding:30px;
+    box-shadow:0 20px 40px rgba(0,0,0,.2);
+}
+
+h2{
+    text-align:center;
+    color:#fff;
+    font-size:32px;
+    margin-bottom:25px;
+}
+
+.input-container{
+    display:flex;
+    gap:10px;
+    margin-bottom:25px;
+}
+
+#task-input{
+    flex:1;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    outline:none;
+    font-size:16px;
+    background:rgba(255,255,255,.95);
+    color:#333;
+}
+
+#task-input::placeholder{
+    color:#777;
+}
+
+#add-task-btn{
+    border:none;
+    border-radius:12px;
+    padding:15px 22px;
+    cursor:pointer;
+    color:#fff;
+    font-weight:bold;
+    font-size:15px;
+    background:linear-gradient(135deg,#00c6ff,#0072ff);
+    transition:.3s;
+}
+
+#add-task-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,114,255,.5);
+}
+
+#task-list{
+    list-style:none;
+}
+
+.task-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:rgba(255,255,255,.92);
+    margin-bottom:15px;
+    padding:14px;
+    border-radius:15px;
+    animation:slide .3s ease;
+    transition:.3s;
+}
+
+.task-item:hover{
+    transform:translateX(5px);
+    box-shadow:0 10px 20px rgba(0,0,0,.12);
+}
+
+@keyframes slide{
+    from{
+        opacity:0;
+        transform:translateY(-15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.task-text{
+    flex:1;
+    font-size:16px;
+    color:#333;
+    word-break:break-word;
+}
+
+.task-item.completed{
+    background:#d4edda;
+}
+
+.task-item.completed .task-text{
+    text-decoration:line-through;
+    color:#666;
+}
+
+input[type="checkbox"]{
+    width:20px;
+    height:20px;
+    cursor:pointer;
+    accent-color:#28a745;
+}
+
+.delete-btn{
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(135deg,#ff416c,#ff4b2b);
+    color:#fff;
+    padding:8px 14px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.delete-btn:hover{
+    transform:scale(1.08);
+    box-shadow:0 6px 15px rgba(255,75,43,.45);
+}
+
+.task-counter{
+    color:white;
+    text-align:center;
+    margin-top:20px;
+    font-size:15px;
+    opacity:.9;
+}
+
+/* Watermark */
+.watermark{
+    width:100%;
+    max-width:450px;
+    margin-top:20px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,0.35);
+    padding-top:15px;
+    color:rgba(255,255,255,0.8);
+    font-size:14px;
+}
+
+.watermark span{
+    color:#ff4d6d;
+    font-weight:bold;
+    font-size:15px;
+}
+
+.watermark p:last-child{
+    margin-top:5px;
+    color:#ffd6d6;
+}
+</style>
+
+</head>
+<body>
+
+<div class="task-tracker-card">
+
+    <h2>📝 Task Tracker</h2>
+
+    <div class="input-container">
+        <input
+            type="text"
+            id="task-input"
+            placeholder="Enter your task..."
+        >
+        <button id="add-task-btn">➕</button>
+    </div>
+
+    <ul id="task-list"></ul>
+
+    <div class="task-counter">
+        Total Tasks: <span id="count">0</span>
+    </div>
+
+</div>
+
+<!-- Watermark -->
+<div class="watermark">
+    <p>
+        Submitted by
+        <span>Kishan Jangid</span>
+    </p>
+    <p>PRN: 1272251069</p>
+</div>
+
+<script>
+
+const taskInput=document.getElementById("task-input");
+const addTaskBtn=document.getElementById("add-task-btn");
+const taskList=document.getElementById("task-list");
+const counter=document.getElementById("count");
+
+function updateCounter(){
+    counter.textContent=taskList.children.length;
+}
+
+function addTask(){
+
+    const text=taskInput.value.trim();
+
+    if(text===""){
+        alert("Please enter a task.");
+        return;
+    }
+
+    const li=document.createElement("li");
+    li.className="task-item";
+
+    li.innerHTML=`
+        <input type="checkbox">
+        <span class="task-text">${text}</span>
+        <button class="delete-btn">🗑</button>
+    `;
+
+    taskList.appendChild(li);
+
+    taskInput.value="";
+    taskInput.focus();
+
+    updateCounter();
+
+    const checkbox=li.querySelector("input");
+
+    checkbox.addEventListener("change",()=>{
+        li.classList.toggle("completed");
+    });
+
+    const deleteBtn=li.querySelector(".delete-btn");
+
+    deleteBtn.addEventListener("click",()=>{
+
+        li.style.transform="translateX(100px)";
+        li.style.opacity="0";
+
+        setTimeout(()=>{
+            li.remove();
+            updateCounter();
+        },250);
+
+    });
+
+}
+
+addTaskBtn.addEventListener("click",addTask);
+
+taskInput.addEventListener("keydown",(e)=>{
+    if(e.key==="Enter"){
+        addTask();
+    }
+});
+
+</script>
+
+</body>
+</html>
