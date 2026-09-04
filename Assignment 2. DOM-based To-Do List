@@ -1,0 +1,20 @@
+Assignment 2. DOM-based To-Do List 
+• Aim: To build a dynamic, interactive To-Do List application using vanilla HTML, 
+CSS, and JavaScript DOM manipulation. 
+• Learning Objectives: Understand Document Object Model (DOM) selection 
+methods, event listeners (click, submit), and dynamic element creation/deletion. 
+• Theoretical Background: The DOM tree representing the page structure; using 
+document.getElementById(), document.createElement(), appendChild(), and 
+addEventListener() to modify UI state dynamically. 
+• Detailed Requirements: 
+o HTML Structure: An input text field, an "Add Task" button, and an 
+empty list container (<ul> or <div>). 
+o CSS Styling: Basic clean interface styling, including a visual indicator 
+(like a strikethrough or color change) for completed tasks. 
+o JavaScript Logic: 
+▪ Add: Read the input field, create a new list item (<li>) 
+dynamically, and append it to the container. 
+▪ Toggle Complete: Click on a task to toggle a CSS class (e.g., 
+.completed) that visually marks it off. 
+▪ Delete: Add a "Delete" button next to each task that removes that 
+specific node from the DOM when clicked.
