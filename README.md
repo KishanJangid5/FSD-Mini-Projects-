@@ -10,7 +10,7 @@ This repository contains all of my Full Stack Development assignments, completed
 * 💻 Build real-world mini applications using modern web technologies.
 * 🔥 Maintain a consistent GitHub contribution streak.
 * 📈 Track my learning progress from JavaScript basics to the MERN Stack.
-* 🧠 Improve problem-solving and coding best practices.
+
 
 ---
 
