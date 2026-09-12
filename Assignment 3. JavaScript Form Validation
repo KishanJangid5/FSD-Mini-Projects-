@@ -1,0 +1,20 @@
+Assignment 3. JavaScript Form Validation 
+• Aim: To build a robust user registration form with client-side input validation 
+using JavaScript. 
+• Learning Objectives: Understand form submission interception, regular 
+expressions (RegEx) for data pattern matching, and real-time DOM feedback. 
+• Theoretical Background: Client-side validation improves user experience by 
+correcting inputs before sending them to a server. 
+• Detailed Requirements: 
+o Form Fields: Name (text), Email (email), Phone (tel), Password 
+(password), and a Submit button. 
+o Validation Rules: 
+▪ Name: Cannot be empty; must contain only letters (minimum 3 
+characters). 
+▪ Email: Must match standard email format (use RegEx). 
+▪ Phone: Must be a valid 10-digit numeric value. 
+▪ Password: Minimum 8 characters, containing at least one 
+uppercase letter, one lowercase letter, and one number. 
+o Error Handling: Prevent default form submission if any validation fails 
+(event.preventDefault()). Display specific error messages next to or below 
+the respective input fields.
