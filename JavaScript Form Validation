@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Registration</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f2f5f9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    width:420px;
+    background:#fff;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:25px;
+    color:#444;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:6px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:2px solid #ddd;
+    border-radius:8px;
+    font-size:15px;
+    outline:none;
+}
+
+input:focus{
+    border-color:#4A90E2;
+}
+
+.error{
+    color:red;
+    font-size:13px;
+    margin-top:5px;
+}
+
+button{
+    width:100%;
+    padding:13px;
+    background:#4A90E2;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:17px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#2f6fd0;
+}
+
+.success{
+    color:green;
+    text-align:center;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+.footer-line{
+    margin:25px 0 20px;
+    border:none;
+    border-top:1px solid #ddd;
+}
+
+.watermark{
+    text-align:center;
+    color:#666;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.watermark strong{
+    color:#4A90E2;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h2>User Registration</h2>
+
+    <form id="form">
+
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="name">
+            <div class="error" id="nameError"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Email Address</label>
+            <input type="text" id="email">
+            <div class="error" id="emailError"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" id="phone" maxlength="10">
+            <div class="error" id="phoneError"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="password">
+            <div class="error" id="passwordError"></div>
+        </div>
+
+        <button type="submit">Register</button>
+
+        <div class="success" id="success"></div>
+
+        <hr class="footer-line">
+
+        <div class="watermark">
+            <p><strong>Kishan Jangid</strong></p>
+            <p>PRN: 1272251069</p>
+        </div>
+
+    </form>
+
+</div>
+
+<script>
+
+document.getElementById("form").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    document.getElementById("nameError").innerHTML = "";
+    document.getElementById("emailError").innerHTML = "";
+    document.getElementById("phoneError").innerHTML = "";
+    document.getElementById("passwordError").innerHTML = "";
+    document.getElementById("success").innerHTML = "";
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let password = document.getElementById("password").value;
+
+    let valid = true;
+
+    let namePattern = /^[A-Za-z ]{3,30}$/;
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let phonePattern = /^[6-9]\d{9}$/;
+
+    // At least 8 characters, one uppercase, one lowercase and one number
+    let passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+    if(!namePattern.test(name)){
+        document.getElementById("nameError").innerHTML =
+        "Enter a valid full name (letters only).";
+        valid = false;
+    }
+
+    if(!emailPattern.test(email)){
+        document.getElementById("emailError").innerHTML =
+        "Enter a valid email address.";
+        valid = false;
+    }
+
+    if(!phonePattern.test(phone)){
+        document.getElementById("phoneError").innerHTML =
+        "Enter a valid 10-digit phone number.";
+        valid = false;
+    }
+
+    if(!passwordPattern.test(password)){
+        document.getElementById("passwordError").innerHTML =
+        "Password must have at least 8 characters, one uppercase letter, one lowercase letter, and one number.";
+        valid = false;
+    }
+
+    if(valid){
+        document.getElementById("success").innerHTML =
+        "Registration Successful!";
+        document.getElementById("form").reset();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
