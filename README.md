@@ -166,7 +166,13 @@ This repository is primarily maintained for learning purposes. Suggestions, impr
 
 ---
 
+# ⭐ Support
 
+If you find this repository helpful or inspiring, consider giving it a ⭐ on GitHub.
+
+It motivates me to keep learning, building, and maintaining my coding streak.
+
+---
 
 ## 👨‍💻 Author
 
