@@ -207,11 +207,4 @@ document.getElementById("form").addEventListener("submit", function(e){
         document.getElementById("success").innerHTML =
         "Registration Successful!";
         document.getElementById("form").reset();
-    }
 
-});
-
-</script>
-
-</body>
-</html>
